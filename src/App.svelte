@@ -107,17 +107,16 @@
     // If we are on Vercel (https) and backend is IP (http), we need wss://IP (which needs cert)
     // OR we need to use a proxy/tunnel.
     
-    // TUNNEL URL (localhost.run)
-    const backendIp = 'aa5fa10248553c.lhr.life';
-    const backendPort = '443'; // SSL tunnel uses 443
+    // REAL SSL DOMAIN (13.235.96.171.nip.io)
+    // This is a secure WSS connection directly to our server.
+    const backendIp = '13.235.96.171.nip.io';
+    const backendPort = '443'; // SSL uses 443
     
     // Use the hardcoded IP if we are not on localhost
     const targetIp = window.location.hostname === 'localhost' ? ip : backendIp;
     const targetPort = window.location.hostname === 'localhost' ? port : backendPort;
     
-    // If using the tunnel, we MUST use wss:// and no port in the string if it's 443 (or standard).
-    // The previous logic constructed `${protocol}//${targetIp}:${targetPort}`
-    // If targetPort is 443, it's fine.
+    // If using SSL (port 443), we MUST use wss:// and no port in the string if it's 443.
     
     socket = new WebSocket(`${protocol}//${targetIp}${targetPort === '443' ? '' : ':' + targetPort}`);
 

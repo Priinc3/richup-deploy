@@ -108,7 +108,7 @@
     // OR we need to use a proxy/tunnel.
     
     // TUNNEL URL (localhost.run)
-    const backendIp = 'adee218cf9b555.lhr.life';
+    const backendIp = 'aa5fa10248553c.lhr.life';
     const backendPort = '443'; // SSL tunnel uses 443
     
     // Use the hardcoded IP if we are not on localhost
